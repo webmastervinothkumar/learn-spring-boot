@@ -1,4 +1,4 @@
-package com.webmastervino.springboot.learn_spring_boot.controller;
+package com.webmastervino.springboot.learn_spring_boot.rest.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
