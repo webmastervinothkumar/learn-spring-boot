@@ -8,7 +8,7 @@ import com.webmastervino.springboot.learn_spring_boot.jdbc.model.Course;
 import com.webmastervino.springboot.learn_spring_boot.jdbc.repository.CourseJdbcRepository;
 
 @Component
-public class CourseJdbcCommonLinerRunner implements CommandLineRunner{
+public class CourseJdbcCommandLinerRunner implements CommandLineRunner{
 
     @Autowired
     private CourseJdbcRepository repository;

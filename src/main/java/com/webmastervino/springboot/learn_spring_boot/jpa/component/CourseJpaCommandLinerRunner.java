@@ -11,7 +11,7 @@ import jakarta.transaction.Transactional;
 
 @Component
 @Transactional
-public class CourseJpaCommonLinerRunner implements CommandLineRunner{
+public class CourseJpaCommandLinerRunner implements CommandLineRunner{
 
     @Autowired
     private CourseJpaRepository repository;
