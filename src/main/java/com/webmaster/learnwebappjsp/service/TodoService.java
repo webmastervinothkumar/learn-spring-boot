@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 
 import com.webmaster.learnwebappjsp.model.Todo;
 
+import jakarta.validation.Valid;
+
 @Service
 public class TodoService {
 
@@ -28,5 +30,21 @@ public class TodoService {
 
     public void addTodo(String username, String name, String description, LocalDate targetDate, Boolean done) {
         todos.add(new Todo(++todoCount, name, description, done, targetDate, username));
+    }
+
+    public void deleteTodo(long id) {
+        todos.removeIf(todo -> todo.getId() == id);
+    }
+
+    public Todo findById(long id) {
+        return todos.stream().filter(todo -> todo.getId() == id).findFirst().get();
+    }
+
+    public void updateTodo(Todo todo) {
+        Todo todoToBeUpdated = findById(todo.getId());
+        todoToBeUpdated.setName(todo.getName());
+        todoToBeUpdated.setDescription(todo.getDescription());
+        todoToBeUpdated.setTargetDate(todo.getTargetDate());
+        todoToBeUpdated.setDone(todo.isDone());
     }
 }
