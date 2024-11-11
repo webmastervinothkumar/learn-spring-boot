@@ -1,0 +1,21 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/">Todo App</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+            <li class="nav-item <c:if test="${pageContext.request.requestURI == '/'}">active</c:if>">
+                <a class="nav-link" href="/">Home <c:if test="${pageContext.request.requestURI == '/'}"><span class="sr-only">(current)</span></c:if></a>
+            </li>
+            <li class="nav-item <c:if test="${pageContext.request.requestURI == '/about'}">active</c:if>">
+                <a class="nav-link" href="/about">About <c:if test="${pageContext.request.requestURI == '/about'}"><span class="sr-only">(current)</span></c:if></a>
+            </li>
+        </ul>
+    </div>
+    <ul class="navbar-nav">
+        <li class="nav-item <c:if test="${pageContext.request.requestURI == '/logout'}">active</c:if>">
+            <a class="nav-link" href="/logout">Logout <c:if test="${pageContext.request.requestURI == '/logout'}"><span class="sr-only">(current)</span></c:if></a>
+        </li>
+    </ul>
+</nav>

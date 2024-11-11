@@ -17,7 +17,6 @@ import com.webmaster.learnwebappjsp.service.TodoService;
 import jakarta.validation.Valid;
 
 @Controller
-@RequestMapping("/webapp")
 @SessionAttributes("username")
 public class TodoController {
 
@@ -25,7 +24,7 @@ public class TodoController {
     private TodoService todoService;
      @RequestMapping("/list-todos")
         public String listTodos(ModelMap model) {
-            model.addAttribute("todos", todoService.findByUserName("in28Minutes"));
+            model.addAttribute("todos", todoService.findByUserName(model.get("username").toString()));
             return "list-todos";
         }
 
