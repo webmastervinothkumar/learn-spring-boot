@@ -2,7 +2,6 @@ package com.webmaster.learnwebappjsp.controller;
 
 import java.time.LocalDate;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -12,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.webmaster.learnwebappjsp.model.Todo;
+import com.webmaster.learnwebappjsp.service.TodoMockService;
 import com.webmaster.learnwebappjsp.service.TodoService;
 
 import jakarta.validation.Valid;
@@ -20,8 +20,15 @@ import jakarta.validation.Valid;
 @SessionAttributes("username")
 public class TodoController {
 
-    @Autowired
+    //replace todoservice with todomockservice to use mocks
+    private TodoMockService todoMockService;
+
     private TodoService todoService;
+
+    private TodoController(TodoMockService todoMockService, TodoService todoService) {
+        this.todoService = todoService;
+        this.todoMockService = todoMockService;
+    }
      @RequestMapping("/list-todos")
         public String listTodos(ModelMap model) {
             model.addAttribute("todos", todoService.findByUserName(model.get("username").toString()));
@@ -68,7 +75,7 @@ public class TodoController {
             }
             
             String username = (String) model.get("username");
-            todoService.updateTodo(todo);
+            todoService.updateTodo(todo,username);
             return "redirect:list-todos";
         }
 }
